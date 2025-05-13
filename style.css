@@ -1,0 +1,128 @@
+@charset "UTF-8";
+:root {
+  --color-line: #633115;
+  --color-bun-shadow: #e37c1f;
+  --color-bun: #f89e37;
+  --color-bun-shadow: #e47d1f;
+  --color-bun-border: #623115;
+  --color-sausage: #b35222;
+  --color-sausage-shadow: #9d4019;
+  --color-ketchup: #e6271a;
+  --color-mustard: #fab336;
+  --color-background: #fde8c4;
+  background-color: var(--color-background);
+  /* from https://jerosoler.github.io/background-emoji/ */
+  background-size: 9.375rem 4.5rem;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 150 72" opacity=".3" width="150" height="72" font-size="30"> <text x="0em" y="1em"  >🍔</text> <text x="1.25em" y="2em" >🌭</text> <text x="2.5em" y="1em" >🥙</text> <text x="3.75em" y="2em" >🥓</text></svg>');
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+.content {
+  min-height: 200vh;
+}
+
+body {
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 5.5rem;
+  height: 5.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bun);
+  border-radius: 5rem;
+  border: 0.5rem solid var(--color-line);
+  padding: 1rem;
+  box-shadow: inset -1rem 0px 0 var(--color-bun-shadow);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4rem;
+  background-color: var(--color-sausage);
+  border: 0.5rem solid var(--color-line);
+  box-shadow: inset -1rem 0px 0 var(--color-sausage-shadow);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 80% 100%;
+  background-image: repeating-linear-gradient(var(--r, 45deg), var(--color-ketchup) 0, var(--color-ketchup) 0.5rem, transparent 0.5rem, transparent 1rem, var(--color-mustard) 1rem, var(--color-mustard) 1.5rem, transparent 1.5rem, transparent 1.2rem);
+  background-image: radial-gradient(circle at bottom left, transparent 25%, var(--color-ketchup) 25.5%, var(--color-ketchup) 36%, transparent 37%, transparent 100%), radial-gradient(circle at top right, transparent 34%, var(--color-ketchup) 34.5%, var(--color-ketchup) 45.5%, transparent 46%, transparent 100%), radial-gradient(circle at bottom left, transparent 25%, var(--color-mustard) 25.5%, var(--color-mustard) 36%, transparent 37%, transparent 100%), radial-gradient(circle at top right, transparent 34%, var(--color-mustard) 34.5%, var(--color-mustard) 45.5%, transparent 46%, transparent 100%);
+  background-size: 3em 3em;
+  background-repeat: repeat;
+  background-position: 0% 0%, 0% 0%, 100% 100%, 100% 100%;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+.not-webkit {
+  display: none;
+}
+
+@supports not selector(::-webkit-scrollbar-thumb) {
+  .not-webkit {
+    display: block;
+  }
+}
+.hot-dog {
+  position: relative;
+  display: grid;
+  height: auto;
+  width: 25rem;
+  rotate: -40deg;
+  margin: 20% auto 0;
+  width: 25rem;
+}
+.hot-dog:after {
+  content: "";
+  position: absolute;
+  aspect-ratio: 1;
+  width: 110%;
+  border-radius: 50%;
+  background-color: #f9d49c;
+  z-index: -1;
+  top: -40%;
+}
+.hot-dog__sausage {
+  grid-row: 2/4;
+  grid-column: 1;
+  border-radius: 4rem;
+  background-color: var(--color-sausage);
+  border: 0.5rem solid var(--color-line);
+  box-shadow: inset 1rem -1rem 0 var(--color-sausage-shadow);
+  margin: 0 -16% 1rem -8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.hot-dog__condiment {
+  color: var(--color-mustard);
+  font-weight: 900;
+  font-size: 5rem;
+  line-height: 1rem;
+  letter-spacing: -0.5rem;
+}
+.hot-dog__condiment--ketchup {
+  color: var(--color-ketchup);
+}
+.hot-dog__bun {
+  grid-row: 1/3;
+  grid-column: 1;
+  background: var(--color-bun);
+  border-radius: 5rem;
+  border: 0.5rem solid var(--color-line);
+  padding: 3rem 2.5rem;
+  box-shadow: inset 1rem -2rem 0 var(--color-bun-shadow);
+}
+.hot-dog__bun--front {
+  grid-row: 3/5;
+  margin-inline: 8% -12%;
+}
